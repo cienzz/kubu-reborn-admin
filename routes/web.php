@@ -67,17 +67,15 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('sign-up');
 });
 
-
-
 Route::group(['middleware' => 'guest'], function () {
-    Route::get('/register', [RegisterController::class, 'create']);
-    Route::post('/register', [RegisterController::class, 'store']);
+    // Route::get('/register', [RegisterController::class, 'create']);
+    // Route::post('/register', [RegisterController::class, 'store']);
     Route::get('/login', [SessionsController::class, 'create']);
     Route::post('/session', [SessionsController::class, 'store']);
-	Route::get('/login/forgot-password', [ResetController::class, 'create']);
-	Route::post('/forgot-password', [ResetController::class, 'sendEmail']);
-	Route::get('/reset-password/{token}', [ResetController::class, 'resetPass'])->name('password.reset');
-	Route::post('/reset-password', [ChangePasswordController::class, 'changePassword'])->name('password.update');
+	// Route::get('/login/forgot-password', [ResetController::class, 'create']);
+	// Route::post('/forgot-password', [ResetController::class, 'sendEmail']);
+	// Route::get('/reset-password/{token}', [ResetController::class, 'resetPass'])->name('password.reset');
+	// Route::post('/reset-password', [ChangePasswordController::class, 'changePassword'])->name('password.update');
 
 });
 
