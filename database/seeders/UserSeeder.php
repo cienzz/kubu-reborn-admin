@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Constants\UserRole;
+use App\Constants\UserStatus;
+use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
@@ -15,13 +17,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'id' => 1,
-            'name' => 'admin',
-            'email' => 'admin@softui.com',
-            'password' => Hash::make('secret'),
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
+        User::updateOrCreate(['username' => 'admin'], ['password' => Hash::make('secret'), 'role' => UserRole::ADMIN, 'status' => UserStatus::ACTIVE]);
     }
 }
